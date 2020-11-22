@@ -8,13 +8,16 @@ class Calculator extends React.Component {
         }
     }
     setValue = x => {
-        console.log(x)
         this.setState((state) => ({value: state.value + x}))
-        console.log(this.state.value)
     }
     calculate = () => {
-        const output = eval(this.state.value)
-        this.setState({value : output})
+        try{
+            const output = eval(this.state.value)
+            this.setState({value : output})
+        }
+        catch{
+            this.setState({value:'invalid input'})
+        }
     }
     clearScreen = () => {
         this.setState({value: ''})
